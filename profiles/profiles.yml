@@ -7,7 +7,7 @@ dbtlearn:
       user: "{{ env_var('SNOWFLAKE_USER') }}"
       password: "{{ env_var('SNOWFLAKE_PASSWORD') }}"
       role: "{{ env_var('SNOWFLAKE_ROLE', 'DEV_ROLE') }}"
-      database: "{{ env_var('SNOWFLAKE_DEV_DB') }}"
+      database: AIRBNB
       warehouse: "{{ env_var('SNOWFLAKE_WAREHOUSE') }}"
       schema: "{{ env_var('SNOWFLAKE_DEV_SCHEMA', 'public') }}"
     prod:
@@ -16,6 +16,6 @@ dbtlearn:
       user: "{{ env_var('SNOWFLAKE_USER') }}"
       password: "{{ env_var('SNOWFLAKE_PASSWORD') }}"
       role: "{{ env_var('SNOWFLAKE_ROLE', 'PROD_ROLE') }}"
-      database: "{{ env_var('SNOWFLAKE_PROD_DB') }}"
+      database: AIRBNB
       warehouse: "{{ env_var('SNOWFLAKE_WAREHOUSE') }}"
       schema: "{{ env_var('SNOWFLAKE_PROD_SCHEMA', 'public') }}"
