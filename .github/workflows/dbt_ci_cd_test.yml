@@ -26,9 +26,11 @@ jobs:
           pip install dbt-snowflake
 
       - name: Configure dbt Profiles
-        run: |
-          mkdir -p ~/.dbt
-          cp ./profiles/profiles.yml ~/.dbt/profiles.yml
+        run: 
+          echo "DBT_PROFILES_DIR=$GITHUB_WORKSPACE/profiles" >> $GITHUB_ENV
+          # mkdir -p ~/.dbt
+          # cp ./profiles/profiles.yml ~/.dbt/profiles.yml
+          
 
       - name: Set up Snowflake credentials
         run: |
