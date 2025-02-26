@@ -42,11 +42,11 @@ jobs:
           echo "SNOWFLAKE_PROD_DB=${{ secrets.SNOWFLAKE_PROD_DB }}" >> $GITHUB_ENV
           echo "SNOWFLAKE_WAREHOUSE=${{ secrets.SNOWFLAKE_WAREHOUSE }}" >> $GITHUB_ENV
 
-      - name: Run dbt Build & Test
+      - name: Run dbt Run & Test
         run: |
           dbt debug
           dbt deps
-          dbt build --target=dev
+          dbt run --target=dev
 
   deploy-to-prod:
     needs: dbt-build-test
@@ -81,4 +81,4 @@ jobs:
 
       - name: Deploy to Prod
         run: |
-          dbt build --target=prod
+          dbt run --target=prod
