@@ -31,7 +31,6 @@ jobs:
           # mkdir -p ~/.dbt
           # cp ./profiles/profiles.yml ~/.dbt/profiles.yml
           
-
       - name: Set up Snowflake credentials
         run: |
           echo "SNOWFLAKE_ACCOUNT=${{ secrets.SNOWFLAKE_ACCOUNT }}" >> $GITHUB_ENV
@@ -42,11 +41,11 @@ jobs:
           echo "SNOWFLAKE_PROD_DB=${{ secrets.SNOWFLAKE_PROD_DB }}" >> $GITHUB_ENV
           echo "SNOWFLAKE_WAREHOUSE=${{ secrets.SNOWFLAKE_WAREHOUSE }}" >> $GITHUB_ENV
 
-      - name: Run dbt Run & Test
+      - name: Run dbt Run & Test (Dev)
         run: |
           dbt debug
           dbt deps
-          dbt run --target=dev
+          dbt run --target=dev --full-refresh
 
   deploy-to-prod:
     needs: dbt-build-test
@@ -79,6 +78,6 @@ jobs:
           echo "SNOWFLAKE_PROD_DB=${{ secrets.SNOWFLAKE_PROD_DB }}" >> $GITHUB_ENV
           echo "SNOWFLAKE_WAREHOUSE=${{ secrets.SNOWFLAKE_WAREHOUSE }}" >> $GITHUB_ENV
 
-      - name: Deploy to Prod
+      - name: Deploy to Prod (Full Refresh)
         run: |
-          dbt run --target=prod
+          dbt run --target=prod --full-refresh
