@@ -41,10 +41,11 @@ jobs:
           echo "SNOWFLAKE_PROD_DB=${{ secrets.SNOWFLAKE_PROD_DB }}" >> $GITHUB_ENV
           echo "SNOWFLAKE_WAREHOUSE=${{ secrets.SNOWFLAKE_WAREHOUSE }}" >> $GITHUB_ENV
 
-      - name: Run dbt Run & Test (Dev)
+      - name: Run dbt Clean, Run & Test (Dev)
         run: |
           dbt debug
           dbt deps
+          dbt clean  # Deletes existing artifacts and removes outdated views
           dbt run --target=dev --full-refresh
 
   deploy-to-prod:
@@ -65,9 +66,10 @@ jobs:
           pip install dbt-snowflake
 
       - name: Configure dbt Profiles
-        run: |
-          mkdir -p ~/.dbt
-          cp ./profiles/profiles.yml ~/.dbt/profiles.yml
+        run: 
+          echo "DBT_PROFILES_DIR=$GITHUB_WORKSPACE/profiles" >> $GITHUB_ENV
+         # mkdir -p ~/.dbt
+         # cp ./profiles/profiles.yml ~/.dbt/profiles.yml
 
       - name: Set up Snowflake credentials
         run: |
@@ -78,6 +80,7 @@ jobs:
           echo "SNOWFLAKE_PROD_DB=${{ secrets.SNOWFLAKE_PROD_DB }}" >> $GITHUB_ENV
           echo "SNOWFLAKE_WAREHOUSE=${{ secrets.SNOWFLAKE_WAREHOUSE }}" >> $GITHUB_ENV
 
-      - name: Deploy to Prod (Full Refresh)
+      - name: Deploy to Prod (Clean & Full Refresh)
         run: |
+          dbt clean  # Cleans up old models and views no longer in the repository
           dbt run --target=prod --full-refresh
