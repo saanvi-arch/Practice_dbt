@@ -9,7 +9,7 @@ dbtlearn:
       role: "{{ env_var('SNOWFLAKE_ROLE', 'DEV_ROLE') }}"
       database: AIRBNB
       warehouse: "{{ env_var('SNOWFLAKE_WAREHOUSE') }}"
-      schema: "{{ env_var('SNOWFLAKE_DEV_SCHEMA', 'public') }}"
+      schema: "{{ env_var('SNOWFLAKE_DEV_SCHEMA', 'RAW') }}"
     prod:
       type: snowflake
       account: "{{ env_var('SNOWFLAKE_ACCOUNT') }}"
@@ -18,4 +18,4 @@ dbtlearn:
       role: "{{ env_var('SNOWFLAKE_ROLE', 'PROD_ROLE') }}"
       database: AIRBNB
       warehouse: "{{ env_var('SNOWFLAKE_WAREHOUSE') }}"
-      schema: "{{ env_var('SNOWFLAKE_PROD_SCHEMA', 'public') }}"
+      schema: "{{ env_var('SNOWFLAKE_PROD_SCHEMA', 'RAW') }}"
