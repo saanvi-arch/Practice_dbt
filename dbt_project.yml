@@ -35,7 +35,7 @@ models:
     +schema: lake
     +materialized: view
    
-    mart:
+    mart_saanvi:
     +schema: mart
     +materialized: table
 
