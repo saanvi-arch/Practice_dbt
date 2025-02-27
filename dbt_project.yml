@@ -37,7 +37,7 @@ models:
    
     mart_saanvi:
     +schema: mart
-    +materialized: table
+    +materialized: table #comment
 
 
     
