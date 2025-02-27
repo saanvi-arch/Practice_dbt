@@ -31,7 +31,13 @@ clean-targets:         # directories to be removed by `dbt clean`
 # files using the `{{ config(...) }}` macro.
 models:
   dbtlearn:
+    lake:
+    +schema: lake
     +materialized: view
+   
+    mart:
+    +schema: mart
+    +materialized: table
 
 
     
