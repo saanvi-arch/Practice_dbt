@@ -3,7 +3,7 @@ dbtlearn:
   outputs:
     dev:
       type: snowflake
-      account: "{{ env_var('SNOWFLAKE_ACCOUNT') }}"
+      account: kg94819.central-india.azure
       user: "{{ env_var('SNOWFLAKE_USER') }}"
       password: "{{ env_var('SNOWFLAKE_PASSWORD') }}"
       role: "{{ env_var('SNOWFLAKE_ROLE', 'DEV_ROLE') }}"
@@ -12,7 +12,7 @@ dbtlearn:
       schema: "{{ env_var('SNOWFLAKE_DEV_SCHEMA', 'RAW') }}"
     prod:
       type: snowflake
-      account: "{{ env_var('SNOWFLAKE_ACCOUNT') }}"
+      account: kg94819.central-india.azure
       user: "{{ env_var('SNOWFLAKE_USER') }}"
       password: "{{ env_var('SNOWFLAKE_PASSWORD') }}"
       role: "{{ env_var('SNOWFLAKE_ROLE', 'PROD_ROLE') }}"
