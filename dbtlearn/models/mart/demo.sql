@@ -1,0 +1,5 @@
+CREATE TABLE AIRBNB.MART.demo_table (
+    id INT PRIMARY KEY,
+    name STRING,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
