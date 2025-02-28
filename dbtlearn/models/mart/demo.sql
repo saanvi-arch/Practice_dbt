@@ -1,6 +1,6 @@
 {{ config(
     materialized='table',
-    schema='MART'  # No comment inside config()
+    schema='MART'  
 ) }}
 
 SELECT 
