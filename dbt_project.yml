@@ -30,13 +30,13 @@ clean-targets:         # directories to be removed by `dbt clean`
 # directory as views. These settings can be overridden in the individual model
 # files using the `{{ config(...) }}` macro.
 models:
+  dbtlearn:
     lake:
-    +schema: lake
-    +materialized: view
-   
-    mart_saanvi:
-    +schema: mart
-    +materialized: table #comment
+      +schema: lake
+      +materialized: view
+    mart:
+      +schema: mart
+      +materialized: table
 
 
     
