@@ -32,12 +32,11 @@ clean-targets:         # directories to be removed by `dbt clean`
 models:
   dbtlearn:
     lake:
-    +schema: lake
-    +materialized: view
-   
-    mart_saanvi:
-    +schema: mart
-    +materialized: table #comment
+      +schema: lake
+      +materialized: view
+    mart:
+      +schema: mart
+      +materialized: table
 
 
     
