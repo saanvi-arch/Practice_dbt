@@ -1,5 +1,10 @@
-CREATE TABLE AIRBNB.MART.demo_table (
-    id INT PRIMARY KEY,
-    name STRING,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
+{{ config(
+    materialized='table',
+    schema='MART'  -- Ensure it goes into the correct schema
+) }}
+
+SELECT 
+    1 AS id, 
+    'Demo Name' AS name, 
+    CURRENT_TIMESTAMP AS created_at
+
