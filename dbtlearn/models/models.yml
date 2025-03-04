@@ -3,26 +3,22 @@ version: 2
 models:
   - name: src_host
     description: "Source host data for Airbnb."
-    config:
-      schema: lake
+    config:   
       materialized: view
 
   - name: src_listing
     description: "Source listing data for Airbnb."
-    config:
-      schema: lake
+    config:    
       materialized: view
 
   - name: src_reviews
     description: "Source reviews data for Airbnb."
     config:
-      schema: lake
       materialized: view
 
   - name: demo
     description: "Demo table stored in the mart schema."
     config:
-      schema: mart
       materialized: table
 
 
