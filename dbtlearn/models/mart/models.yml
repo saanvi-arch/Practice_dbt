@@ -1,0 +1,11 @@
+version: 2
+
+models:
+  - name: "{{ model.name }}"
+    description: "Model is stored in the correct schema based on its materialization."
+    config:
+      schema: "{% if config.get('materialized') == 'view' %}lake{% else %}mart{% endif %}"
+
+    
+
+
