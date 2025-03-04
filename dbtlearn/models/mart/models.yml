@@ -1,10 +1,31 @@
 version: 2
 
 models:
-  - name: "{{ model.name }}"
-    description: "Model is stored in the correct schema based on its materialization."
+  - name: src_host
+    description: "Source host data for Airbnb."
     config:
-      schema: "{% if config.get('materialized') == 'view' %}lake{% else %}mart{% endif %}"
+      schema: lake
+      materialized: view
+
+  - name: src_listing
+    description: "Source listing data for Airbnb."
+    config:
+      schema: lake
+      materialized: view
+
+  - name: src_reviews
+    description: "Source reviews data for Airbnb."
+    config:
+      schema: lake
+      materialized: view
+
+  - name: demo
+    description: "Demo table stored in the mart schema."
+    config:
+      schema: mart
+      materialized: table
+
+
 
     
 
