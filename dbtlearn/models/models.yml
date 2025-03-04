@@ -1,0 +1,20 @@
+models:
+  - name: src_host
+    config:
+      schema: lake
+      materialized: view
+
+  - name: src_listing
+    config:
+      schema: lake
+      materialized: view
+
+  - name: src_reviews
+    config:
+      schema: lake
+      materialized: view
+
+  - name: demo
+    config:
+      schema: mart
+      materialized: table

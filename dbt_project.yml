@@ -32,11 +32,13 @@ clean-targets:         # directories to be removed by `dbt clean`
 models:
   dbtlearn:
     lake:
-      +schema: lake
+      +schema: lake  # All models in 'lake' folder will go to 'lake' schema
       +materialized: view
     mart:
-      +schema: mart
+      +schema: mart  # All models in 'mart' folder will go to 'mart' schema
       +materialized: table
+
+
 
 
     
